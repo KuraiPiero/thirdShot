@@ -1,8 +1,7 @@
 import Sequelize from "sequelize";
-import { config } from "dotenv";
+require("dotenv").config();
 
 export const sequelize = new Sequelize(
-  "mariadb",
   process.env.DB_NAME,
   process.env.USERNAME,
   process.env.PASSWORD,
@@ -12,7 +11,7 @@ export const sequelize = new Sequelize(
     dialectOptions: {
       collate: "utf8mb4_general_ci",
       useUTC: false,
-      timezone: "Etc/GMT0"
+      timezone: "Etc/GMT-5"
     },
     pool: {
       min: 0,

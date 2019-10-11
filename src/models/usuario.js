@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
 import { sequelize } from "../database/db";
-import verificationToken from "./verificationtokens";
+import verificationToken from "./verificationtoken";
 const Usuario = sequelize.define(
   "usuarios",
   {
@@ -17,7 +17,7 @@ const Usuario = sequelize.define(
       type: Sequelize.STRING
     },
     email: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
       unique: true,
       validate: {
@@ -53,14 +53,6 @@ const Usuario = sequelize.define(
       type: Sequelize.INTEGER("tiny"),
       allowNull: false,
       defaultValue: 0
-    },
-    createdAt: {
-      allowNull: false,
-      type: Sequelize.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: Sequelize.DATE
     }
   },
   {
