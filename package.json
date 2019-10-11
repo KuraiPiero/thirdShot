@@ -1,0 +1,43 @@
+{
+  "name": "sqlcrud",
+  "version": "1.0.0",
+  "description": "tercer intento de integrar un crud de sql con passport y sendgrid",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "sql",
+    "passpord",
+    "sendgrid"
+  ],
+  "author": "KuraiPiero",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/polyfill": "^7.6.0",
+    "@sendgrid/mail": "^6.4.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "crypto-random-string": "^3.0.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mariadb": "^2.1.1",
+    "morgan": "^1.9.1",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.7.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "sequelize": "^5.19.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
+    "nodemon": "^1.19.3",
+    "sequelize-cli": "^5.5.1"
+  }
+}
