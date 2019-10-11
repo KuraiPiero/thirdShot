@@ -31,17 +31,17 @@ export async function crearUsuario(req, res) {
       },
       {
         fields: [
-          "nombre",
-          "apellido",
-          "email",
-          "passwor",
-          "rol",
-          "celular",
-          "ciudad",
-          "direccion",
-          "fecha_creacion",
-          "ultima_sesion",
-          "estado"
+          nombre,
+          apellido,
+          email,
+          password,
+          rol,
+          celular,
+          ciudad,
+          direccion,
+          fecha_creacion,
+          ultima_sesion,
+          estado
         ]
       }
     );
