@@ -1,5 +1,17 @@
 import Usuario from "../models/usuario";
 
+export async function encontrarUsuarios(req, res) {
+    try {
+        const usuarios = await Usuario.findAll()
+        res.json({
+            data: usuarios
+        })
+    } catch (error) {
+        console.log(e);
+
+    }
+}
+
 export async function crearUsuario(req, res) {
   const {
     nombre,

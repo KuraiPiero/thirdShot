@@ -10,18 +10,14 @@ const Usuario = sequelize.define(
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-    nombre: {
-      type: Sequelize.STRING
-    },
-    apellido: {
-      type: Sequelize.STRING
-    },
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true
+  {
+    classMethods: {
+      associate: function(models) {
+        User.hasOne(models.VerificationToken, {
+          as: "verificationtoken",
+          foreignKey: "usuario_id",
+          foreignKeyConstraint: true
+        });
       }
     },
     password: {
