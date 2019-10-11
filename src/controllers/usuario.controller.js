@@ -31,17 +31,17 @@ export async function crearUsuario(req, res) {
       },
       {
         fields: [
-          nombre,
-          apellido,
-          email,
-          password,
-          rol,
-          celular,
-          ciudad,
-          direccion,
-          fecha_creacion,
+          "nombre",
+          "apellido",
+          "email",
+          "password",
+          "rol",
+          "celular",
+          "ciudad",
+          "direccion",
+          fecha_creacion, //error en formato
           ultima_sesion,
-          estado
+          "estado"
         ]
       }
     );
@@ -54,3 +54,17 @@ export async function crearUsuario(req, res) {
     res.status(500).json({ message: "algunos parametros erroneos", data: {} });
   }
 }
+
+/*{
+	  "nombre": "pepito",
+    "apellido": "perez",
+    "email": "dummy@gmail.com",
+    "password": "123456",
+    "rol": "1",
+    "celular":"123456789",
+    "ciudad":"medellin",
+    "direccion":"dummy",
+    "fecha_creacion":"{% now 'unix', '' %}",
+    "ultima_sesion":"{% now 'iso-8601', '' %}",
+    "estado":"1"
+}*/

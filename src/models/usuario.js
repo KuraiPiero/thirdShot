@@ -56,7 +56,7 @@ const Usuario = sequelize.define(
     }
   },
   {
-    timestamps: false
+    timestamps: true
   }
 );
 
