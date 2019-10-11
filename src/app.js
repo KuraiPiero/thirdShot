@@ -1,6 +1,6 @@
 import express, { json } from "express";
 import morgan from "morgan";
-
+import db from "./models/usuario"
 //Puerto
 
 //Importacion de rutas

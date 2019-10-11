@@ -1,32 +1,32 @@
 {
-  "development": {
-    "username": "root",
-    "password": null,
-    "database": "test",
-    "host": "127.0.0.1",
-    "dialect": "mariadb",
-    "dialectOptions": {
-      "timezone": "Etc/GMT0"
+    "development": {
+        "username": "root",
+        "password": null,
+        "database": "test",
+        "host": "127.0.0.1",
+        "dialect": "mariadb",
+        "dialectOptions": {
+            "timezone": "Utc/GMT-5"
+        }
+    },
+    "test": {
+        "username": "root",
+        "password": null,
+        "database": "test",
+        "host": "127.0.0.1",
+        "dialect": "mariadb",
+        "dialectOptions": {
+            "timezone": "Utc/GMT-5"
+        }
+    },
+    "production": {
+        "username": "root",
+        "password": null,
+        "database": "test",
+        "host": "127.0.0.1",
+        "dialect": "mariadb",
+        "dialectOptions": {
+            "timezone": "Utc/GMT-5"
+        }
     }
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "test",
-    "host": "127.0.0.1",
-    "dialect": "mariadb",
-    "dialectOptions": {
-      "timezone": "Etc/GMT0"
-    }
-  },
-  "production": {
-    "username": "root",
-    "password": null,
-    "database": "test",
-    "host": "127.0.0.1",
-    "dialect": "mariadb",
-    "dialectOptions": {
-      "timezone": "Etc/GMT0"
-    }
-  }
 }
