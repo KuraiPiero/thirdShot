@@ -8,6 +8,9 @@ rol INTEGER(10),
 ciudad VARCHAR(30) NOT NULL,
 direccion VARCHAR(30) NOT NULL,
 celular VARCHAR(30) NOT NULL,
+fecha_creacion Date NOT NULL DEFAULT current_timestamp(),
+ultima_sesion Date NOT NULL DEFAULT current_timestamp(),
+
 estado INTEGER(10)
 
 )ENGINE = InnoDB;
