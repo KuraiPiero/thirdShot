@@ -1,11 +1,10 @@
 import Sequelize from "sequelize";
 import { sequelize } from "../database/db";
-import verificationToken from "./verificationtoken";
 import bcrypt from "bcryptjs";
 const Usuario = sequelize.define(
   "usuarios",
   {
-    id: {
+    id_usuario: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
@@ -58,17 +57,13 @@ const Usuario = sequelize.define(
   }
 );
 
-Usuario.hasMany(verificationToken, {
-  foreingKey: "usuario_id",
-  sourceKey: "id"
-});
-
-verificationToken.belongsTo(Usuario, {
-  foreingKey: "usuario_id",
-  sourceKey: "id"
-});
-Usuario.prototype.validPassword = function(password) {
-  return bcrypt.compareSync(password, this.password);
+Usuario.prototype.comparePassword = function(password, cb) {
+  bcrypt.compare(password, this.password, function(err, isMatch) {
+    if (err) {
+      return cb(err);
+    }
+    cb(null, isMatch);
+  });
 };
 // Hooks are automatic methods that run during various phases of the User Model lifecycle
 // In this case, before a User is created, we will automatically hash their password

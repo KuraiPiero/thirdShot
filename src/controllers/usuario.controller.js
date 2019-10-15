@@ -1,4 +1,7 @@
 import Usuario from "../models/usuario";
+import jwt from "jsonwebtoken";
+
+import { passport } from "../config/passport";
 
 export async function encontrarUsuarios(req, res) {
   const usuarios = await Usuario.findAll();
@@ -80,4 +83,37 @@ export async function eliminarUnUsuario(req, res) {
   });
 }
 
-export async function autentificacionUsuario(req, res) {}
+export async function autentificacionUsuario(req, res) {
+  const { email } = req.params;
+  Usuario.find({
+    where: {
+      username: email
+    }
+  })
+    .then(user => {
+      if (!user) {
+        return res.status(401).send({
+          message: "‘Authentication failed.User not found.’"
+        });
+      }
+      user.comparePassword(req.body.password, (err, isMatch) => {
+        if (isMatch && !err) {
+          var token = jwt.sign(
+            JSON.parse(JSON.stringify(user)),
+            "nodeauthsecret",
+            { expiresIn: 86400 * 30 }
+          );
+          jwt.verify(token, "nodeauthsecret", function(err, data) {
+            console.log(err, data);
+          });
+          res.json({ success: true, token: "JWT" + token });
+        } else {
+          res.status(401).send({
+            success: false,
+            msg: "‘Authentication failed.Wrong password.’"
+          });
+        }
+      });
+    })
+    .catch(error => res.status(400).send(error));
+}
