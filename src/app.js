@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import morgan from "morgan";
 import db from "./models/usuario";
+import bodyParser from "body-parser";
 import passport from "passport";
 import LocalStrategy from "passport-local";
 LocalStrategy.Strategy;
@@ -17,29 +18,9 @@ const app = express();
 app.use(morgan("dev"));
 app.use(json());
 app.use(expressSession(session));
-passport.use(
-  new LocalStrategy(
-    {
-      usernameField: "email",
-      passwordField: "password"
-    },
-    function(username, password, done) {
-      const { email } = Usuario;
-      User.findOne({ username: email }, function(err, Usuario) {
-        if (err) {
-          return done(err);
-        }
-        if (!Usuario) {
-          return done(null, false, { message: "Incorrect username." });
-        }
-        if (!Usuario.validPassword(password)) {
-          return done(null, false, { message: "Incorrect password." });
-        }
-        return done(null, Usuario);
-      });
-    }
-  )
-);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+require("./config/passport")(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 //routes

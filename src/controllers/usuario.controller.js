@@ -1,8 +1,6 @@
 import Usuario from "../models/usuario";
 import jwt from "jsonwebtoken";
 
-import { passport } from "../config/passport";
-
 export async function encontrarUsuarios(req, res) {
   const usuarios = await Usuario.findAll();
   res.json({

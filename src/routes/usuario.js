@@ -1,5 +1,6 @@
 import { Router } from "express";
 const router = Router();
+import passport from "passport-local";
 import {
   crearUsuario,
   encontrarUsuarios,
@@ -9,8 +10,12 @@ import {
 } from "../controllers/usuario.controller";
 
 router.get("/", encontrarUsuarios);
-router.post("/", crearUsuario);
+router.post("/signup", crearUsuario);
 router.post("/login", autentificacionUsuario);
+router.get("/logout", function(req, res) {
+  req.logout();
+  res.redirect("/");
+});
 
 //encontrar por id
 router.get("/:id", encontrarUnUsuario);
